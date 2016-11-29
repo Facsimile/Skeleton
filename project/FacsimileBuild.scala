@@ -464,11 +464,14 @@ object FacsimileBuild {
      *
      * To obtain the hexadecimal key ID, enter the command:
      *
-     *   gpg --keyid-format LONG -k authenticatoin@facsim.org
+     *   gpg --keyid-format 0xLONG --list-secret-keys authentication@facsim.org
+     *
+     * Look for the key ID in the line beginning with "sec".
      *
      * Note that, for security, the private signing key and passcode are not publicly available.
      */
-    PgpKeys.pgpSigningKey := Some(0xC08B4D86EACCE720L),
+    //PgpKeys.pgpSigningKey := Some(0xC08B4D86EACCE720L),
+    PgpKeys.usePgpKeyHex("c08b4d86eacce720"),
 
     /*
      * Sign releases prior to publication.
